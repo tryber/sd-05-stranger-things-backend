@@ -1,6 +1,6 @@
 apps:
 
-  - name: cduessel-bk
+  - name: hawkins
     script: ./index.js
     exec_mode: cluster
     instances: 2
