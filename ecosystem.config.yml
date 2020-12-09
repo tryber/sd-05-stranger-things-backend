@@ -1,0 +1,7 @@
+apps:
+  - name: app
+    watch: false
+    exec_mode: cluster
+    script: ./index.js
+    instances: 2
+    max_memory_restart: 200M
