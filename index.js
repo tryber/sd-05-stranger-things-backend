@@ -6,8 +6,6 @@ const strangerThingsDataset = require('./data/dataset/stranger-things-characters
 const StrangerThingsRepository = require('./data/repository/StrangerThings');
 const StrangerThingsService = require('./services/StrangerThings');
 
-
-
 const app = express();
 
 const strangerThingsRepository = new StrangerThingsRepository(
