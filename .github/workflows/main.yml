@@ -32,7 +32,6 @@ jobs:
           GITHUB_USER_TEST: ${{ github.actor }} 
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
-        if: steps.wait-for-build.outputs.conclusion == 'success'
         with:
           evaluation-data: ${{ steps.evaluator.outputs.result }}
           environment: production
