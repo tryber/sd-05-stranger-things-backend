@@ -13,7 +13,6 @@ const strangerThingsService = new StrangerThingsService(strangerThingsRepository
 
 app.use(cors());
 
-// const hereIsTheUpsideDown = true;
 const hereIsTheUpsideDown = Boolean(process.env.UPSIDEDOWN_MODE);
 
 app.get('/', (req, res) => {
