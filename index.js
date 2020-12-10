@@ -19,7 +19,7 @@ app.use(cors());
 
 // const hereIsTheUpsideDown = true;
 const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE === 'true';
-// isso compara e controla se variavel de ambiente dà certo
+// controla se variável de ambiente, setada com heroku, dá certo
 
 app.get('/', (req, res) => {
   const characters = strangerThingsService.search(
