@@ -9,6 +9,8 @@ const StrangerThingsService = require('./services/StrangerThings');
 
 const app = express();
 
+const UPSIDE_DOWN = process.env.UPSIDEDOWN_MODE || false;
+
 const strangerThingsRepository = new StrangerThingsRepository(
   strangerThingsDataset,
 );
@@ -17,10 +19,11 @@ const strangerThingsService = new StrangerThingsService(
 );
 
 app.use(cors());
-
+// UPSIDEDOWN_MODE=false isso estava no arquiv env;
 // const hereIsTheUpsideDown = true;
-
-const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE || true;
+// const hereIsTheUpsideDown = Boolean(process.env.UPSIDEDOWN_MODE);
+const hereIsTheUpsideDown = UPSIDE_DOWN;
+// const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE || 'true';
 
 // hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE;
 
