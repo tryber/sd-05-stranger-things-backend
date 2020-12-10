@@ -19,7 +19,8 @@ app.use(cors());
 
 // const hereIsTheUpsideDown = true;
 // const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE || false;
-const hereIsTheUpsideDown = Boolean(process.env.UPSIDEDOWN_MODE);
+const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE === 'true';
+// isso compara e controla se variavel de ambiente dà certo
 
 app.get('/', (req, res) => {
   const characters = strangerThingsService.search(
