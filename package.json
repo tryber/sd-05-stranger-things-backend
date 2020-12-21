@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2-runtime start index.js ecosystem.config.yml",
-    "start:dev": "pm2-runtime start --watch --name preto",
+    "start:dev": "pm2-runtime start index.js --watch --name preto",
     "test": "jest --runInBand  --detectOpenHandles --forceExit",
     "lint": "eslint --no-inline-config --ext .js,.jsx --no-error-on-unmatched-pattern -c .eslintrc.json ."
   },
