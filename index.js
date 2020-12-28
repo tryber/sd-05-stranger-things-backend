@@ -19,16 +19,14 @@ const strangerThingsService = new StrangerThingsService(
 
 app.use(cors());
 
-const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE || true;
+const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE === 'true';
 
 app.get('/', (req, res) => {
-  res.send(`valor da variavel de ambiente: ${hereIsTheUpsideDown}`);
-  // const characters = strangerThingsService.search(
-  //   req.query,
-  //   hereIsTheUpsideDown,
-  // );
-
-  // res.status(200).json(characters);
+  const characters = strangerThingsService.search(
+    req.query,
+    hereIsTheUpsideDown,
+  );
+  res.status(200).json(characters);
 });
 
 app.listen(PORT, () => {
