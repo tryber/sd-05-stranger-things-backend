@@ -22,10 +22,11 @@ app.use(cors());
 const hereIsTheUpsideDown = process.env.UPSIDEDOWN_MODE || true;
 
 app.get('/', (req, res) => {
-  const characters = strangerThingsService.search(
-    req.query,
-    hereIsTheUpsideDown,
-  );
+  res.send(`valor da variavel de ambiente: ${hereIsTheUpsideDown}`);
+  // const characters = strangerThingsService.search(
+  //   req.query,
+  //   hereIsTheUpsideDown,
+  // );
 
   res.status(200).json(characters);
 });
