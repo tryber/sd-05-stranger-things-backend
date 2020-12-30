@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.yml",
-    "start:dev": "pm2 start index.js --name StrangerThings --watch",
+    "start:dev": "pm2 start --watch",
     "test": "jest --runInBand  --detectOpenHandles --forceExit",
     "lint": "eslint --no-inline-config --ext .js,.jsx --no-error-on-unmatched-pattern -c .eslintrc.json ."
   },
@@ -20,7 +20,6 @@
     "pm2": "^4.5.1"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
