@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
   res.status(200).json(characters);
 });
 
-const PORT = parseInt(process.env.PORT, 10);
+const { PORT } = process.env;
 
 app.listen(PORT, () => {
   console.log(`Escutando na Porta ${PORT}`);
