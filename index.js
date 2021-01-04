@@ -7,7 +7,7 @@ const StrangerThingsService = require('./services/StrangerThings');
 
 require('dotenv').config();
 
-const UPSIDEDOWN_MODE = process.env.UPSIDEDOWN_MODE === 'true' ? true : false;
+const UPSIDEDOWN_MODE = process.env.UPSIDEDOWN_MODE === 'true' ? 1 : 0;
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   res.status(200).json(characters);
 });
 
-const { PORT } = process.env;
+const PORT = process.env.PORT ? process.env.PORT : 3000;
 app.listen(PORT, () => {
   console.log(`Sweet dreams are made on port: ${PORT}`);
 });
