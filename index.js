@@ -7,8 +7,8 @@ const StrangerThingsRepository = require('./data/repository/StrangerThings');
 const StrangerThingsService = require('./services/StrangerThings');
 
 const app = express();
+// PORTA DO PARANAUE
 const PORT = process.env.PORT || 3000;
-
 const strangerThingsRepository = new StrangerThingsRepository(
   strangerThingsDataset,
 );
