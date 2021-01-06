@@ -1,7 +1,7 @@
 apps:
-- name: hawkins
-  script: ./index.js
-  exec_mode: cluster
-  instances: 2
-  watch: false
-  max_memory_restart: 200M
+  - name: hawkins
+    script: ./index.js
+    exec_mode: cluster
+    instances: 2
+    watch: false
+    max_memory_restart: 200M
