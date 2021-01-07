@@ -1,2 +1,4 @@
 node_modules
 .vscode
+# Ignorando o arquivo de config do kyle
+.env.testing
