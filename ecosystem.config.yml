@@ -4,4 +4,4 @@ apps:
     exec_mode: cluster
     instances: 2
     watch: false
-    max_memory_restart: 200m
+    max_memory_restart: 200M
