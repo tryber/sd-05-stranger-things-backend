@@ -1,7 +1,7 @@
 {
   "name": "api-upside-down",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aqui você vai encontrar os locais para colocar suas repostas relativas aos requisitos de frontend.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -24,5 +24,16 @@
     "frisby": "^2.1.3",
     "jest": "^26.4.2",
     "js-yaml": "^3.14.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tryber/sd-05-stranger-things-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tryber/sd-05-stranger-things-backend/issues"
+  },
+  "homepage": "https://github.com/tryber/sd-05-stranger-things-backend#readme"
 }
