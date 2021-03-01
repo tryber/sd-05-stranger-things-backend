@@ -1,0 +1,120 @@
+ANOTAÇÕES
+
+______________________________________
+
+Requisito 1) Fazer o arquivo .env no repositório de back-end, contendo as seguintes variáveis e valores:
+
+PORT=3000
+UPSIDEDOWN_MODE=true
+GITHUB_USER=marinabrcls
+
+______________________________________
+
+Requisito 2) Instalação do PM2 (Gerenciador de processos).
+
+Comando conforme está no course:
+npm install pm2@latest -g
+
+Precisei acrescentar "sudo" no começo do comando acima para instalar corretamente.
+
+Mas não deu certo pra mim, então utilizei esse comando complementar para instalar o restante das dependências:
+npm i @pm2/pm2-version-check
+
+______________________________________
+
+Requisito 3) Adicionar o arquivo ecosystem.config.yml.
+
+O arquivo deverá realizar as seguintes configurações:
+- Ativar o Modo Cluster;
+- Subir duas instâncias do processo;
+- Não assistir à alterações no diretório (modowatch desativado);
+- Reiniciar o processo caso ele consuma mais de 200MB de memória.
+
+Vai ficar assim:
+
+apps:
+  - name: app
+    script: ./index.js
+    exec_mode: cluster
+    instances: 2
+    watch: false
+    max_memory_restart: 200M
+
+______________________________________
+
+Requisito 4) Adicionar/alterar dois scripts no package.json:
+
+- start: Deverá iniciar o server utilizando o módulo do PM2 e apontando para o arquivo ecosystem criado;
+- start:dev: Deverá iniciar o server utilizando o módulo do PM2, sem apontar para o arquivo ecosystem e com o parâmetro para "observar alterações no diretório" ativado.
+
+Vai ficar assim:
+
+"scripts": {
+    "start": "pm2-runtime start ecosystem.config.yml",
+    "start:dev": "pm2-runtime start index.js --watch",
+}
+
+______________________________________
+
+Requisito 5) Definir um arquivo Procfile.
+
+Utilizar a mesma configuração do script start do package.json: iniciar o server utilizando o módulo do PM2, apontando para o arquivo ecosystem criado anteriormente.
+Como nossos serviços receberão acessos HTTP externos, precisamos definir os Dynos como sendo do tipo web.
+
+Vai ficar assim:
+
+web: pm2-runtime start ecosystem.config.yml
+
+______________________________________
+
+Requisito 6) Deploy no Heroku
+
+Uma variável de ambiente com o nome GITHUB_USER deverá ser criada com o seu usuário do github.
+
+Crie dois apps do Heroku a partir do mesmo código fonte (código da API). O nome do seu app no heroku deverá conter seu nome de usuário no github seguido de "-bk" para o app Hawkings e "-bd" para o app UpsideDown. 
+
+Passos que eu segui:
+
+*1. Inicializar o heroku com o comando:
+    heroku login
+
+*2. Não utilizei o "init", fui direto para o comando: 
+    heroku create marinabrcls-bk --remote heroku
+    
+Resultado:
+
+Creating ⬢ marinabrcls-bk... done
+https://marinabrcls-bk.herokuapp.com/ | https://git.heroku.com/marinabrcls-bk.git
+
+*3. Repeti o comando alterando o nome do app:
+    heroku create marinabrcls-bd --remote heroku
+    
+Resultado:
+
+Creating ⬢ marinabrcls-bd... done
+https://marinabrcls-bd.herokuapp.com/ | https://git.heroku.com/marinabrcls-bd.git
+
+*4. Verificar se foi criado corretamente com o comando:
+    git remote -v
+
+*5. Fiz as alterações necessárias no index.js (incluir o process.env como critério para UPSIDEDOWN_MODE)
+
+*6. Faz stagge (git add) e commita as alterações, em seguida executei o comando:
+     git push heroku marinabrcls-stranger-things-backend:master
+
+*7. Verifiquei se deu certo acessando o link:
+    https://marinabrcls-bk.herokuapp.com/
+
+*8. Mudar para o repositório bd, que já foi criado, com o comando:
+    heroku git:remote marinabrcls-bd
+
+*9. Pode verificar novamente se está no repositório certo com o comando:
+    git remote -v 
+
+*10. Fiz as alterações no .env, fiz commit e fiz push no repositório do BD no heroku, usando o mesmo comando:
+    git push heroku marinabrcls-stranger-things-backend:master
+
+*11. Verifiquei que deu certo acessando o link:
+    https://marinabrcls-bd.herokuapp.com/
+
+*12. Fiz o push normal pro repositório da trybe para rodar o avaliador
