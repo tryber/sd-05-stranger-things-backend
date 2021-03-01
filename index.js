@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+// const SERVER_ENV = process.env.SERVER_ENV || 'deu ruim';
 
 app.listen(PORT, () => {
   console.log(`Escutando na porta ${PORT}`);
